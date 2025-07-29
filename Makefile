@@ -6,40 +6,44 @@
 #    By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 13:20:43 by psmolich          #+#    #+#              #
-#    Updated: 2025/07/21 15:34:38 by psmolich         ###   ########.fr        #
+#    Updated: 2025/07/29 09:49:02 by psmolich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.SILENT:
-.PHONY: all bonus clean fclean re
+# .SILENT:
+.PHONY: all basic bonus clean fclean re
 
-NAME := push_swap
+PUSHSWAP := push_swap
 CHECKER := checker
-LIB := libft.a
-SRCS := ft_push_swap.c 
+
+LIB := libft/libft.a
+
+SRCS_PUSHSWAP := push_swap.c
+SRCS_CHECKER := checker.c 
+
 CC := cc
 CFLAGS := -Wall -Wextra -Werror
 
-all: $(NAME)
+basic: $(PUSHSWAP)
 
 bonus: $(CHECKER) 
 
-$(NAME): $(LIB)
-	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(LIB)
+all: $(PUSHSWAP) $(CHECKER) 
+
+$(PUSHSWAP): $(LIB)
+	$(CC) $(CFLAGS) -o $(PUSHSWAP) $(SRCS_PUSHSWAP) $(LIB)
 
 $(CHECKER): $(LIB)
-	$(CC) $(CFLAGS) -o $(CHECKER) ft_$(CHECKER).c $(LIB)
+	$(CC) $(CFLAGS) -o $(CHECKER) $(SRCS_CHECKER) $(LIB)
 
 $(LIB):
 	make -C libft/
-	mv -u libft/$(LIB) .
 
 clean:
 	make clean -C libft/
-	rm -f $(LIB)
 	
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(PUSHSWAP)
 	rm -f $(CHECKER)
 	make fclean -C libft/
 

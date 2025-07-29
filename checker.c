@@ -6,13 +6,13 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:33:59 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/21 17:38:05 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/07/29 09:29:09 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	check_instr(char *input, char **instr)
+static int	check_instr(char *input, char **instr)
 {
 	int	i;
 
@@ -33,14 +33,14 @@ int	main(int argc, char **argv)
 		"rr\n", "rra\n", "rrb\n", "rrr\n", NULL};
 	char		*input;
 
-	if (argc <= 1)
+	if (argc < 2)
 		return (FAIL);
-	ft_strcmp(argv[1], "");
+	(void)argv;
 	input = get_next_line(0);
 	while (input != NULL)
 	{
 		if (check_instr(input, instr) == SUCCESS)
-			apply_instr(input);
+			ft_printf("ok\n");
 		else
 			return (free(input), write(2, "Error\n", 6), FAIL);
 		free(input);
