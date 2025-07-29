@@ -6,47 +6,34 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:33:59 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 12:23:01 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/07/29 15:18:40 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static int	check_instr(char *input, char **instr)
+static int	apply_instr(char *input)
 {
-	int	i;
-
-	i = 0;
-	while (instr[i])
-	{
-		if (ft_strcmp(instr[i], input) == 0)
-			return (SUCCESS);
-		i++;
-	}
-	return (FAIL);
+	
 }
 
 int	main(int ac, char **av)
 {
-	static char	*instr[12] = {
-		"sa\n", "sb\n", "ss\n", "pa\n", "pb\n", "ra\n", "rb\n",
-		"rr\n", "rra\n", "rrb\n", "rrr\n", NULL};
 	char		*input;
 	t_list		**stack_a;
-	//t_list		**stack_b;
+	t_list		**stack_b;
 
 	if (ac < 2)
 		return (FAIL);
 	stack_a = (t_list **)malloc(sizeof(t_list *));
-	//stack_b = (t_list **)malloc(sizeof(t_list *));
 	if (record_arg(ac, av, stack_a) == FAIL)
-		return(ft_printf("booo\n"), FAIL);
-	ft_lstprint(*stack_a);
-	ft_printf("%i\n", ft_lstissorted(*stack_a));
+		return(FAIL);
+	stack_b = (t_list **)malloc(sizeof(t_list *));
+
 	input = get_next_line(0);
 	while (input != NULL)
 	{
-		if (check_instr(input, instr) == SUCCESS)
+		if (apply_instr(input, instr) == FAIL)
 			ft_printf("ok\n");
 		else
 			return (free(input), write(2, "Error\n", 6), FAIL);
@@ -55,3 +42,10 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
+
+	// ft_lstprint(*stack_a);
+	// ft_printf("%i\n", ft_lstissorted(*stack_a));
+
+	// static char	*instr[12] = {
+	// 	"sa\n", "sb\n", "ss\n", "pa\n", "pb\n", "ra\n", "rb\n",
+	// 	"rr\n", "rra\n", "rrb\n", "rrr\n", NULL};

@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 09:33:46 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 12:20:19 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:07:43 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstprint(t_list *lst);
 int		ft_lstissorted(t_list *lst);
+void	ft_lstfree(t_list **lst);
 #endif
