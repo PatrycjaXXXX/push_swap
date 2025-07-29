@@ -1,20 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                       :+:      :+:    :+:   */
+/*   stacka_creator.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 14:34:02 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/21 14:47:22 by psmolich         ###   ########.fr       */
+/*   Created: 2025/07/29 10:34:40 by psmolich          #+#    #+#             */
+/*   Updated: 2025/07/29 10:39:20 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "checker.h"
 
-# include "libft/libft.h"
-# include "lst_utils/lst.h"
-# include <limits.h>
-
-#endif
