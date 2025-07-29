@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:33:59 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 11:40:53 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/07/29 12:23:01 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,16 @@ int	main(int ac, char **av)
 		"rr\n", "rra\n", "rrb\n", "rrr\n", NULL};
 	char		*input;
 	t_list		**stack_a;
+	//t_list		**stack_b;
 
 	if (ac < 2)
 		return (FAIL);
 	stack_a = (t_list **)malloc(sizeof(t_list *));
+	//stack_b = (t_list **)malloc(sizeof(t_list *));
 	if (record_arg(ac, av, stack_a) == FAIL)
 		return(ft_printf("booo\n"), FAIL);
+	ft_lstprint(*stack_a);
+	ft_printf("%i\n", ft_lstissorted(*stack_a));
 	input = get_next_line(0);
 	while (input != NULL)
 	{
