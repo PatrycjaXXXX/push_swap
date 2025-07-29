@@ -17,4 +17,5 @@
 # include "lst_utils/lst.h"
 # include <limits.h>
 
+int	record_arg(int ac, char **av, t_list **stack_a);
 #endif

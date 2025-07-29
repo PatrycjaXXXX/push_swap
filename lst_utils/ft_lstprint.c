@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst.h                                              :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 09:33:46 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 12:01:19 by psmolich         ###   ########.fr       */
+/*   Created: 2025/07/29 11:57:25 by psmolich          #+#    #+#             */
+/*   Updated: 2025/07/29 12:01:00 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LST_H
-# define LST_H
+#include "../libft/libft.h"
+#include "lst.h"
 
-typedef struct s_list
+void	ft_lstprint(t_list *lst)
 {
-	int				content;
-	struct s_list	*next;
-}t_list;
-t_list	*ft_lstnew(int content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstprint(t_list *lst);
-#endif
+	t_list	*curr;
+
+	if (!lst)
+		return ;
+	curr = lst;
+	while (curr)
+	{
+		ft_printf("%i\n", curr->content);
+		curr = curr->next;
+	}
+}

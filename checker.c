@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:33:59 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 10:44:18 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/07/29 11:40:53 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_instr(char *input, char **instr)
 	return (FAIL);
 }
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
 	static char	*instr[12] = {
 		"sa\n", "sb\n", "ss\n", "pa\n", "pb\n", "ra\n", "rb\n",
@@ -34,12 +34,11 @@ int	main(int argc, char **argv)
 	char		*input;
 	t_list		**stack_a;
 
-	(void)argv;
-	stack_a = (t_list **)malloc(sizeof(t_list *));
-	
-	if (argc < 2)
+	if (ac < 2)
 		return (FAIL);
-	
+	stack_a = (t_list **)malloc(sizeof(t_list *));
+	if (record_arg(ac, av, stack_a) == FAIL)
+		return(ft_printf("booo\n"), FAIL);
 	input = get_next_line(0);
 	while (input != NULL)
 	{

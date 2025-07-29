@@ -6,7 +6,7 @@
 #    By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 10:11:16 by psmolich          #+#    #+#              #
-#    Updated: 2025/07/29 10:18:40 by psmolich         ###   ########.fr        #
+#    Updated: 2025/07/29 11:42:52 by psmolich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ FILES := memset bzero memcpy memmove memchr memcmp strlen isalpha isdigit \
 			strlcpy strlcat strnstr atoi calloc strdup substr strjoin strtrim \
 			split itoa strmapi striteri putchar_fd putstr_fd putendl_fd \
 			putnbr_fd \
-			atol strcmp \
+			atol strcmp strstr\
 			check printf put_c_s put_uint_ptr put_int \
 			get_next_line
 
