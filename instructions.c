@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 15:19:06 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/04 14:00:55 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:11:47 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ static int	rotate(t_list **stack)
 	t_list	*second;
 	t_list	*last;
 
-	if (!stack || !*stack || !(*stack)->next)
+	if (!stack)
 		return (FAIL);
+	if (!*stack || !(*stack)->next)
+		return (SUCCESS);
 	first = *stack;
 	second = first->next;
 	last = ft_lstlast(*stack);
@@ -69,8 +71,10 @@ static int	reverse_rotate(t_list **stack)
 	t_list	*second_to_last;
 	t_list	*last;
 
-	if (!stack || !*stack || !(*stack)->next)
+	if (!stack)
 		return (FAIL);
+	if (!*stack || !(*stack)->next)
+		return (SUCCESS);
 	second_to_last = *stack;
 	while (second_to_last->next && second_to_last->next->next)
 		second_to_last = second_to_last->next;
@@ -89,20 +93,20 @@ int	apply_instr(char *instr, t_list **stack_a, t_list **stack_b)
 	else if (!(ft_strcmp(instr, "ss\n")))
 		return ((swap(stack_a) == FAIL || swap(stack_b) == FAIL) * FAIL);
 	else if (!(ft_strcmp(instr, "pa\n")))
-		return (push(stack_a, stack_b));
-	else if (!(ft_strcmp(instr, "pb\n")))
 		return (push(stack_b, stack_a));
+	else if (!(ft_strcmp(instr, "pb\n")))
+		return (push(stack_a, stack_b));
 	else if (!(ft_strcmp(instr, "ra\n")))
 		return (rotate(stack_a));
 	else if (!(ft_strcmp(instr, "rb\n")))
 		return (rotate(stack_b));
 	else if (!(ft_strcmp(instr, "rr\n")))
 		return ((rotate(stack_a) == FAIL || rotate(stack_b) == FAIL) * FAIL);
-	else if (!(ft_strcmp(instr, "rra")))
+	else if (!(ft_strcmp(instr, "rra\n")))
 		return (reverse_rotate(stack_a));
-	else if (!(ft_strcmp(instr, "rrb")))
+	else if (!(ft_strcmp(instr, "rrb\n")))
 		return (reverse_rotate(stack_b));
-	else if (!(ft_strcmp(instr, "rrr")))
+	else if (!(ft_strcmp(instr, "rrr\n")))
 		return ((reverse_rotate(stack_a) == FAIL
 				|| reverse_rotate(stack_b) == FAIL) * FAIL);
 	return (FAIL);

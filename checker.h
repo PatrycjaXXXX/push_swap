@@ -13,9 +13,7 @@
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# include "libft/libft.h"
 # include "lst_int/lst_int.h"
-# include <limits.h>
 
 int	record_arg(int ac, char **av, t_list **stack_a);
 int	apply_instr(char *instr, t_list **stack_a, t_list **stack_b);

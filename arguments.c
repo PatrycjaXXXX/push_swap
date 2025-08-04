@@ -6,11 +6,13 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 10:34:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/04 12:39:15 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:35:25 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libft/libft.h"
+#include "lst_int/lst_int.h"
+#include <limits.h>
 #define FAIL -1
 #define SUCCESS 1
 
@@ -65,6 +67,14 @@ static void	free_arr(int ac, char **arr)
 	return ;
 }
 
+static int	check_format(char *arg)
+{
+	return (!arg
+		|| !*arg
+		|| !ft_strcmp(arg, " ")
+		|| ft_strstr(arg, "  "));
+}
+
 int	record_arg(int ac, char **av, t_list **stack_a)
 {
 	int		i;
@@ -73,7 +83,7 @@ int	record_arg(int ac, char **av, t_list **stack_a)
 
 	if (ac == 2)
 	{
-		if (ft_strstr(av[1], "  ") || av[1][0] == '\0' || !ft_strcmp(av[1], " "))
+		if (check_format(av[1]))
 			return (FAIL);
 		arg = ft_split(av[1], ' ');
 	}

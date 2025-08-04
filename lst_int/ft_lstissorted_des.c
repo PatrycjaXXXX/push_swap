@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 13:09:04 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/04 14:00:23 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:26:51 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_lst_issorted_des(t_list **lst)
 	if (!lst && !*lst)
 		return (FAIL);
 	curr = *lst;
-	while (curr->next)
+	while (curr && curr->next)
 	{
 		if (curr->content < curr->next->content)
 			return (FAIL);
