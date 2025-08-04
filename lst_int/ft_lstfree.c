@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 19:23:18 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 09:37:31 by psmolich         ###   ########.fr       */
+/*   Created: 2025/07/29 12:57:01 by psmolich          #+#    #+#             */
+/*   Updated: 2025/08/04 11:26:09 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lst.h"
+#include "lst_int.h"
+#include <stdlib.h>
 
-// lst: The beginning of the list. (as adress)
-// Return value The length of the list
-// Counts the number of nodes in the list.
-
-int	ft_lstsize(t_list *lst)
+void	ft_lstfree(t_list **lst)
 {
-	int	i;
+	t_list	*temp;
+	t_list	*curr;
 
-	i = 0;
-	while (lst)
+	if (!lst)
+		return ;
+	curr = *lst;
+	while (curr)
 	{
-		i++;
-		lst = lst->next;
+		temp = curr->next;
+		free(curr);
+		curr = temp;
 	}
-	return (i);
+	free(lst);
 }

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstissorted_des.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 19:44:13 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 09:40:19 by psmolich         ###   ########.fr       */
+/*   Created: 2025/08/04 13:09:04 by psmolich          #+#    #+#             */
+/*   Updated: 2025/08/04 14:00:23 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lst.h"
+#include "lst_int.h"
+#define FAIL -1
+#define SUCCESS 1
 
-// lst: The address of a pointer to the first node of
-// a list.
-// new: The address of a pointer to the node to be
-// added.
-// Description Adds the node ’new’ at the end of the list.
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_lst_issorted_des(t_list **lst)
 {
-	t_list	*last;
+	t_list	*curr;
 
-	if (!lst || !new)
-		return ;
-	if (!*lst)
+	if (!lst && !*lst)
+		return (FAIL);
+	curr = *lst;
+	while (curr->next)
 	{
-		*lst = new;
-		return ;
+		if (curr->content < curr->next->content)
+			return (FAIL);
+		curr = curr->next;
 	}
-	last = ft_lstlast(*lst);
-	last->next = new;
+	return (SUCCESS);
 }

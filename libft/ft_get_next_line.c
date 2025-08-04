@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 10:51:38 by psmolich          #+#    #+#             */
-/*   Updated: 2025/06/18 15:00:24 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/04 11:24:36 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#define FAIL -1
+#define SUCCESS 1
 
 static void	ft_free_rest(char **rest, int fd)
 {

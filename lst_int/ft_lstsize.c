@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 17:57:03 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 09:39:50 by psmolich         ###   ########.fr       */
+/*   Created: 2025/05/23 19:23:18 by psmolich          #+#    #+#             */
+/*   Updated: 2025/08/04 11:29:49 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lst.h"
+#include "lst_int.h"
 
-//Adds the node ’new’ at the beginning of the list.
-// lst: The address of a pointer to the first node of
-// a list.
-// new: The address of a pointer to the node to be
-// added.
-
-void	ft_lstadd_front(t_list **lst, t_list *new)
+int	ft_lstsize(t_list *lst)
 {
-	new->next = *lst;
-	*lst = new;
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
 }

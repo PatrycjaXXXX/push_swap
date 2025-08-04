@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 14:34:02 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/21 14:47:22 by psmolich         ###   ########.fr       */
+/*   Created: 2025/05/23 17:33:02 by psmolich          #+#    #+#             */
+/*   Updated: 2025/08/04 11:28:57 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "lst_int.h"
+#include <stdlib.h>
 
-# include "libft/libft.h"
-# include "lst_int/lst_int.h"
-# include <limits.h>
+t_list	*ft_lstnew(int content)
+{
+	t_list	*lstnew;
 
-int	record_arg(int ac, char **av, t_list **stack_a);
-int	apply_instr(char *instr, t_list **stack_a, t_list **stack_b);
-#endif
+	lstnew = malloc(sizeof(t_list));
+	if (!lstnew)
+		return (NULL);
+	lstnew->content = content;
+	lstnew->next = NULL;
+	return (lstnew);
+}

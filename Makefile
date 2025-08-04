@@ -6,7 +6,7 @@
 #    By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 13:20:43 by psmolich          #+#    #+#              #
-#    Updated: 2025/07/29 15:29:30 by psmolich         ###   ########.fr        #
+#    Updated: 2025/08/04 13:54:03 by psmolich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,16 @@ LIB := libft/libft.a
 SRCS_PUSHSWAP := push_swap.c
 SRCS_CHECKER := checker.c arguments.c instructions.c
 
-LST_UTILS := lst_utils/ft_lstnew.c \
-		lst_utils/ft_lstadd_front.c \
-		lst_utils/ft_lstsize.c \
-		lst_utils/ft_lstlast.c \
-		lst_utils/ft_lstadd_back.c \
-		lst_utils/ft_lstprint.c \
-		lst_utils/ft_lstissorted.c \
-		lst_utils/ft_lstfree.c
+LST_UTILS := lst_int/ft_lstadd_back.c \
+			lst_int/ft_lstadd_front.c \
+			lst_int/ft_lstempty.c \
+			lst_int/ft_lstfree.c \
+			lst_int/ft_lstissorted_as.c \
+			lst_int/ft_lstissorted_des.c \
+			lst_int/ft_lstlast.c \
+			lst_int/ft_lstnew.c \
+			lst_int/ft_lstprint.c \
+			lst_int/ft_lstsize.c
 
 CC := cc
 CFLAGS := -Wall -Wextra -Werror

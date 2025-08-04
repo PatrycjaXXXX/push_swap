@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                       :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 14:34:02 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/21 14:47:22 by psmolich         ###   ########.fr       */
+/*   Created: 2025/07/29 11:57:25 by psmolich          #+#    #+#             */
+/*   Updated: 2025/08/04 11:26:26 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "../libft/libft.h"
+#include "lst_int.h"
 
-# include "libft/libft.h"
-# include "lst_int/lst_int.h"
-# include <limits.h>
+void	ft_lstprint(t_list *lst)
+{
+	t_list	*curr;
 
-int	record_arg(int ac, char **av, t_list **stack_a);
-int	apply_instr(char *instr, t_list **stack_a, t_list **stack_b);
-#endif
+	if (!lst)
+		return ;
+	curr = lst;
+	while (curr)
+	{
+		ft_printf("%i\n", curr->content);
+		curr = curr->next;
+	}
+}

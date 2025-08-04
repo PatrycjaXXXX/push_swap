@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstprint.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 11:57:25 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 12:01:00 by psmolich         ###   ########.fr       */
+/*   Created: 2025/05/23 19:44:13 by psmolich          #+#    #+#             */
+/*   Updated: 2025/08/04 11:25:51 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "lst.h"
+#include "lst_int.h"
 
-void	ft_lstprint(t_list *lst)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*curr;
+	t_list	*last;
 
-	if (!lst)
+	if (!lst || !new)
 		return ;
-	curr = lst;
-	while (curr)
+	if (!*lst)
 	{
-		ft_printf("%i\n", curr->content);
-		curr = curr->next;
+		*lst = new;
+		return ;
 	}
+	last = ft_lstlast(*lst);
+	last->next = new;
 }

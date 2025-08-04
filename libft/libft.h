@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 16:46:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 11:42:43 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/04 11:22:39 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 #  define BUFFER_SIZE 10
 # endif
 # define MAX_FD 1024
-# define FAIL -1
-# define SUCCESS 1
 
 char	*get_next_line(int fd);
 

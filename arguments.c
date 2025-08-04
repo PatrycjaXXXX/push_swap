@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   record_arg.c                                       :+:      :+:    :+:   */
+/*   arguments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 10:34:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 13:26:30 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/04 12:39:15 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#define FAIL -1
+#define SUCCESS 1
 
 static int	check_value(const char *nptr, int *number)
 {
@@ -84,7 +86,7 @@ int	record_arg(int ac, char **av, t_list **stack_a)
 	{
 		value = 0;
 		if (check_value(arg[i], &value) == FAIL)
-			return (free_arr(ac, arg), ft_lstfree(stack_a), FAIL);
+			return (free_arr(ac, arg), FAIL);
 		ft_lstadd_back(stack_a, ft_lstnew(value));
 		i++;
 	}

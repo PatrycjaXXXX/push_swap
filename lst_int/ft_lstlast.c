@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 17:33:02 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 09:38:37 by psmolich         ###   ########.fr       */
+/*   Created: 2025/05/23 19:36:59 by psmolich          #+#    #+#             */
+/*   Updated: 2025/08/04 11:28:36 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lst.h"
+#include "lst_int.h"
 #include <stdlib.h>
 
-// Allocates memory (using malloc(3)) and returns
-// a new node. The ’content’ member variable is
-// initialized with the given parameter ’content’.
-// The variable ’next’ is initialized to NULL.
-
-t_list	*ft_lstnew(int content)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*lstnew;
-
-	lstnew = malloc(sizeof(t_list));
-	if (!lstnew)
+	if (!lst)
 		return (NULL);
-	lstnew->content = content;
-	lstnew->next = NULL;
-	return (lstnew);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

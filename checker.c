@@ -6,46 +6,53 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:33:59 by psmolich          #+#    #+#             */
-/*   Updated: 2025/07/29 15:18:40 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:01:11 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#define FAIL -1
 
-static int	apply_instr(char *input)
+static void	cleanup(char *instr, t_list **stack_a, t_list **stack_b)
 {
-	
+	free(instr);
+	ft_lstfree(stack_a);
+	ft_lstfree(stack_b);
 }
 
 int	main(int ac, char **av)
 {
-	char		*input;
+	char		*instr;
 	t_list		**stack_a;
 	t_list		**stack_b;
 
 	if (ac < 2)
 		return (FAIL);
-	stack_a = (t_list **)malloc(sizeof(t_list *));
-	if (record_arg(ac, av, stack_a) == FAIL)
-		return(FAIL);
-	stack_b = (t_list **)malloc(sizeof(t_list *));
 
-	input = get_next_line(0);
-	while (input != NULL)
+	stack_a = (t_list **)malloc(sizeof(t_list *));
+	if (!stack_a)
+		return (write(2, "Error\n", 6), FAIL);
+
+	if (record_arg(ac, av, stack_a) == FAIL)
+		return (ft_lstfree(stack_a), write(2, "Error\n", 6), FAIL);
+
+	stack_b = (t_list **)malloc(sizeof(t_list *));
+	if (!stack_b)
+		return (write(2, "Error\n", 6), FAIL);
+
+	instr = get_next_line(0);
+	while (instr != NULL)
 	{
-		if (apply_instr(input, instr) == FAIL)
-			ft_printf("ok\n");
-		else
-			return (free(input), write(2, "Error\n", 6), FAIL);
-		free(input);
-		input = get_next_line(0);
+		if (apply_instr(instr, stack_a, stack_b) == FAIL)
+			return (cleanup(instr, stack_a, stack_b),
+				write(2, "Error\n", 6), FAIL);
+		free(instr);
+		instr = get_next_line(0);
 	}
+	if (ft_lst_issorted_as(stack_a) && ft_lstempty(stack_b))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
+	cleanup(NULL, stack_a, stack_b);
 	return (0);
 }
-
-	// ft_lstprint(*stack_a);
-	// ft_printf("%i\n", ft_lstissorted(*stack_a));
-
-	// static char	*instr[12] = {
-	// 	"sa\n", "sb\n", "ss\n", "pa\n", "pb\n", "ra\n", "rb\n",
-	// 	"rr\n", "rra\n", "rrb\n", "rrr\n", NULL};

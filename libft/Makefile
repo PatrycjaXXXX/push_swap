@@ -6,7 +6,7 @@
 #    By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 10:11:16 by psmolich          #+#    #+#              #
-#    Updated: 2025/07/29 11:42:52 by psmolich         ###   ########.fr        #
+#    Updated: 2025/08/04 11:18:44 by psmolich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,55 @@
 
 LIB := libft.a
 
-FILES := memset bzero memcpy memmove memchr memcmp strlen isalpha isdigit \
-			isalnum isascii isprint toupper tolower strchr strrchr strncmp \
-			strlcpy strlcat strnstr atoi calloc strdup substr strjoin strtrim \
-			split itoa strmapi striteri putchar_fd putstr_fd putendl_fd \
-			putnbr_fd \
-			atol strcmp strstr\
-			check printf put_c_s put_uint_ptr put_int \
-			get_next_line
+BASIC := ft_atoi.c \
+		ft_bzero.c \
+		ft_calloc.c \
+		ft_isalnum.c \
+		ft_isalpha.c \
+		ft_isascii.c \
+		ft_isdigit.c \
+		ft_isprint.c \
+		ft_itoa.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_memcpy.c \
+		ft_memmove.c \
+		ft_memset.c \
+		ft_putchar_fd.c \
+		ft_putendl_fd.c \
+		ft_putnbr_fd.c \
+		ft_putstr_fd.c \
+		ft_split.c \
+		ft_strchr.c \
+		ft_striteri.c \
+		ft_strjoin.c \
+		ft_strlcat.c \
+		ft_strlcpy.c \
+		ft_strlen.c \
+		ft_strmapi.c \
+		ft_strncmp.c \
+		ft_strnstr.c \
+		ft_strrchr.c \
+		ft_strtrim.c \
+		ft_strdup.c \
+		ft_substr.c \
+		ft_tolower.c \
+		ft_toupper.c
+		
+EXTRA := ft_atol.c \
+		ft_strstr.c \
+		ft_strcmp.c
+		
+PRINTF := ft_check.c \
+		ft_printf.c \
+		ft_put_c_s.c \
+		ft_put_int.c \
+		ft_put_uint_ptr.c
+		
+GNL := ft_get_next_line.c
 
-SRCS := $(patsubst %, ft_%.c, $(FILES))
+SRCS := $(BASIC) $(EXTRA) $(PRINTF) $(GNL)
+
 OBJS := $(patsubst %.c, %.o, $(SRCS))
 
 CC := cc
