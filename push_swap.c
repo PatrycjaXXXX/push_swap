@@ -11,12 +11,28 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/libft.h"
+#include "lst_int/lst_int.h"
+#define FAIL -1
+#define SUCCESS 1
 
 int	main(int argc, char **argv)
 {
-	if (argc <= 1)
-		return (-1);
-	(void)argv;
-	ft_printf("Hello %d!", 42);
+	t_list	**stack_a;
+	t_list	**stack_b;
+
+	if (ac < 2)
+		return (FAIL);
+	stack_a = (t_list **)malloc(sizeof(t_list *));
+	if (!stack_a)
+		return (write(2, "Error\n", 6), FAIL);
+	*stack_a = NULL;
+	if (record_arg(ac, av, stack_a) == FAIL)
+		return (ft_lstfree(stack_a), write(2, "Error\n", 6), FAIL);
+	stack_b = (t_list **)malloc(sizeof(t_list *));
+	if (!stack_b)
+		return (write(2, "Error\n", 6), FAIL);
+	*stack_b = NULL;
+
 	return (0);
 }
