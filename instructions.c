@@ -6,13 +6,12 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 15:19:06 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/04 15:11:47 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/05 13:28:18 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lst_int/lst_int.h"
 #include "libft/libft.h"
-#include <stdlib.h>
 #define FAIL -1
 #define SUCCESS 1
 

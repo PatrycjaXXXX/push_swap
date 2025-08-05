@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 13:23:58 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/05 11:49:01 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/05 14:07:29 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@
 
 int	record_arg(int ac, char **av, t_list **stack_a);
 int	apply_instr(char *instr, t_list **stack_a, t_list **stack_b);
+int	des_to_as(t_list **stack_a, t_list **stack_b, int size_a);
 #endif
