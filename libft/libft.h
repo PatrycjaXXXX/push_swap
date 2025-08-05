@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 16:46:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/04 11:22:39 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/05 12:01:55 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ typedef struct s_flags
 	int	space;
 	int	zero;
 	int	hash;
-}t_flags;
+}	t_flags;
 
 typedef struct s_prec
 {
 	int	dot;
 	int	len;
-}t_prec;
+}	t_prec;
 
 typedef struct s_spec
 {
@@ -53,7 +53,7 @@ typedef struct s_spec
 	t_prec	prec;
 	char	type;
 	int		zprec;
-}t_spec;
+}	t_spec;
 
 int		ft_printf(const char *format, ...);
 int		ft_is_conv(const char *format, int *move, t_spec	*conv);

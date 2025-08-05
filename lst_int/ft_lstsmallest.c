@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstissorted_as.c                                :+:      :+:    :+:   */
+/*   ft_lstsmallest.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 12:12:25 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/05 11:59:56 by psmolich         ###   ########.fr       */
+/*   Created: 2025/08/05 12:48:38 by psmolich          #+#    #+#             */
+/*   Updated: 2025/08/05 13:10:57 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lst_int.h"
-#define FAIL -1
-#define SUCCESS 1
+#include <stdlib.h>
 
-int	ft_lst_issorted_as(t_list *lst)
+t_list	*ft_lstsmallest(t_list *lst)
 {
 	t_list	*curr;
+	t_list	*smallest;
 
 	if (!lst)
-		return (FAIL);
+		return (NULL);
+	if (!lst->next)
+		return (lst);
 	curr = lst;
+	smallest = curr;
 	while (curr && curr->next)
 	{
-		if (curr->content > curr->next->content)
-			return (FAIL);
+		if (smallest->content > curr->next->content)
+			smallest = curr->next->content;
 		curr = curr->next;
 	}
-	return (SUCCESS);
+	return (smallest);
 }

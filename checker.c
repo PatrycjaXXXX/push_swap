@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:33:59 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/04 15:35:40 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/05 12:26:35 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static int	get_instr(t_list **stack_a, t_list **stack_b)
 	{
 		if (apply_instr(instr, stack_a, stack_b) == FAIL)
 			return (free(instr), cleanup(stack_a, stack_b), FAIL);
-		// ft_lstprint(*stack_a);
-		// ft_lstprint(*stack_b);
+		ft_lstprint(*stack_a);
+		ft_lstprint(*stack_b);
 		free(instr);
 		instr = get_next_line(0);
 	}
@@ -57,7 +57,7 @@ int	main(int ac, char **av)
 	*stack_b = NULL;
 	if (get_instr(stack_a, stack_b) == FAIL)
 		return (write(2, "Error\n", 6), FAIL);
-	if (ft_lst_issorted_as(stack_a) == SUCCESS && ft_lstempty(stack_b))
+	if (ft_lst_issorted_as(*stack_a) == SUCCESS && ft_lstempty(*stack_b))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

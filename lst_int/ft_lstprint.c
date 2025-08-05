@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 11:57:25 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/04 15:07:52 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/05 12:07:49 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	ft_lstprint(t_list *lst)
 {
 	t_list	*curr;
 
-	ft_printf("[head]");
 	if (!lst)
 	{
-		ft_printf("empty\n");
+		ft_printf("[NULL]\n");
 		return ;
 	}
+	ft_printf("[head]");
 	curr = lst;
 	while (curr)
 	{

@@ -6,14 +6,14 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 12:24:03 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/04 12:26:50 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/05 12:01:03 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lst_int.h"
 #include <stdlib.h>
 
-int	ft_lstempty(t_list **lst)
+int	ft_lstempty(t_list *lst)
 {
-	return (*lst == NULL);
+	return (lst == NULL);
 }
