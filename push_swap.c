@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 13:23:56 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/05 15:09:37 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:41:48 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 #define FAIL -1
 #define SUCCESS 1
 
-void	ft_bubblesort(t_list **stack_a, t_list **stack_b);
+int	ft_bubblesort(t_list **stack_a, t_list **stack_b, int size_a);
 
 static int	ft_sort_lstint(t_list **stack_a, t_list **stack_b)
 {
 	int	size_a;
 
 	size_a = ft_lstsize(*stack_a);
-
 	if (ft_lst_issorted_des(*stack_a) == SUCCESS)
 		return (des_to_as(stack_a, stack_b, size_a));
-	ft_bubblesort(stack_a, stack_b);
+	ft_bubblesort(stack_a, stack_b, size_a);
 	return (SUCCESS);
 }
 

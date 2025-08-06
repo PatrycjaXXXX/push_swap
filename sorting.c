@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 13:27:41 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/05 15:13:39 by psmolich         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   sorting.c										  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: psmolich <psmolich@student.42berlin.de>	+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2025/08/05 13:27:41 by psmolich		  #+#	#+#			 */
+/*   Updated: 2025/08/06 11:36:53 by psmolich		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "push_swap.h"
@@ -40,18 +40,19 @@ int	des_to_as(t_list **stack_a, t_list **stack_b, int size_a)
 	return (ft_lst_issorted_as(*stack_a));
 }
 
-void	ft_bubblesort(t_list **stack_a, t_list **stack_b)
+int	ft_bubblesort(t_list **stack_a, t_list **stack_b, int size_a)
 {
-	t_list	*first;
-	t_list	*second;
+	int	moves;
 
-	ft_printf("xxx\n");
-	first = *stack_a;
-	second = first->next;
-	while (ft_lst_issorted_as(*stack_a) == FAIL)
+	moves = size_a - 2;
+	while (moves--)
 	{
-		if (first->content > second->content)
+		if ((*stack_a)->content > (*stack_a)->next->content)
 			move_lst("sa\n", stack_a, stack_b);
 		move_lst("ra\n", stack_a, stack_b);
+			i++;
+		}
+		move_lst("rra\n", stack_a, stack_b);
 	}
+	return (SUCCESS);
 }
