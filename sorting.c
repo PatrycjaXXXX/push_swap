@@ -34,13 +34,12 @@ int	des_to_as(t_list **stack_a, t_list **stack_b, int size_a)
 	}
 	move_lst("ra\n", stack_a, stack_b);
 	move_lst("sa\n", stack_a, stack_b);
-	moves = size_a - 3;
-	while (moves--)
+	while (*stack_b)
 		move_lst("pa\n", stack_a, stack_b);
 	return (ft_lst_issorted_as(*stack_a));
 }
 
-void	ft_sort3(t_list **stack_a, t_list **stack_b)
+static void	ft_sort3(t_list **stack_a, t_list **stack_b)
 {
 	while (1)
 	{
@@ -68,5 +67,24 @@ int	ft_selectionsort(t_list **stack_a, t_list **stack_b, int size_a)
 	ft_sort3(stack_a, stack_b);
 	while (*stack_b)
 		move_lst("pa\n", stack_a, stack_b);
+	return (SUCCESS);
+}
+
+int	ft_bubblesort(t_list **stack_a, t_list **stack_b)
+{
+	int	moves;
+
+	while (ft_lst_issorted_as(*stack_a) == FAIL)
+	{
+		moves = ft_lstsize(*stack_a) - 1;
+		while (moves--)
+		{
+			if ((*stack_a)->content > (*stack_a)->next->content)
+				move_lst("sa\n", stack_a, stack_b);
+			move_lst("pb\n", stack_a, stack_b);
+		}
+		while (*stack_b)
+			move_lst("pa\n", stack_a, stack_b);
+	}
 	return (SUCCESS);
 }

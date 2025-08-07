@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 13:23:56 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/07 10:41:02 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:23:23 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 #define SUCCESS 1
 
 int	ft_selectionsort(t_list **stack_a, t_list **stack_b, int size_a);
+int	ft_bubblesort(t_list **stack_a, t_list **stack_b);
+
+static void	cleanup(t_list **stack_a, t_list **stack_b)
+{
+	ft_lstfree(stack_a);
+	ft_lstfree(stack_b);
+}
 
 static int	ft_sort_lstint(t_list **stack_a, t_list **stack_b)
 {
@@ -23,7 +30,8 @@ static int	ft_sort_lstint(t_list **stack_a, t_list **stack_b)
 	size_a = ft_lstsize(*stack_a);
 	if (ft_lst_issorted_des(*stack_a) == SUCCESS)
 		return (des_to_as(stack_a, stack_b, size_a));
-	ft_selectionsort(stack_a, stack_b, size_a);
+	// ft_selectionsort(stack_a, stack_b, size_a);
+	ft_bubblesort(stack_a, stack_b);
 	return (SUCCESS);
 }
 
@@ -44,9 +52,10 @@ int	main(int ac, char **av)
 		return (ft_lstfree(stack_a), 0);
 	stack_b = (t_list **)malloc(sizeof(t_list *));
 	if (!stack_b)
-		return (write(2, "Error\n", 6), FAIL);
+		return (ft_lstfree(stack_a), write(2, "Error\n", 6), FAIL);
 	*stack_b = NULL;
 	if (ft_sort_lstint(stack_a, stack_b) == FAIL)
-		return (write(2, "Error\n", 6), FAIL);
+		return (cleanup(stack_a, stack_b), write(2, "Error\n", 6), FAIL);
+	cleanup(stack_a, stack_b);
 	return (0);
 }
