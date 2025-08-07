@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 12:49:21 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/05 12:59:04 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/07 07:53:02 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*ft_lstlargest(t_list *lst)
 	while (curr && curr->next)
 	{
 		if (largest->content < curr->next->content)
-			largest = curr->next->content;
+			largest = curr->next;
 		curr = curr->next;
 	}
 	return (largest);

@@ -40,19 +40,33 @@ int	des_to_as(t_list **stack_a, t_list **stack_b, int size_a)
 	return (ft_lst_issorted_as(*stack_a));
 }
 
-int	ft_bubblesort(t_list **stack_a, t_list **stack_b, int size_a)
+void	ft_sort3(t_list **stack_a, t_list **stack_b)
 {
-	int	moves;
-
-	moves = size_a - 2;
-	while (moves--)
+	while (1)
 	{
 		if ((*stack_a)->content > (*stack_a)->next->content)
 			move_lst("sa\n", stack_a, stack_b);
-		move_lst("ra\n", stack_a, stack_b);
-			i++;
-		}
+		if (ft_lst_issorted_as(*stack_a) == SUCCESS)
+			break ;
 		move_lst("rra\n", stack_a, stack_b);
 	}
+}
+
+int	ft_selectionsort(t_list **stack_a, t_list **stack_b, int size_a)
+{
+	int	moves;
+	int	min;
+
+	moves = size_a - 3;
+	while (moves--)
+	{
+		min = ft_lstsmallest(*stack_a)->content;
+		while ((*stack_a)->content != min)
+			move_lst("ra\n", stack_a, stack_b);
+		move_lst("pb\n", stack_a, stack_b);
+	}
+	ft_sort3(stack_a, stack_b);
+	while (*stack_b)
+		move_lst("pa\n", stack_a, stack_b);
 	return (SUCCESS);
 }

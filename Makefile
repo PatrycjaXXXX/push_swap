@@ -6,7 +6,7 @@
 #    By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 13:20:43 by psmolich          #+#    #+#              #
-#    Updated: 2025/08/05 13:41:01 by psmolich         ###   ########.fr        #
+#    Updated: 2025/08/07 07:51:48 by psmolich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ LST_UTILS := lst_int/ft_lstadd_back.c \
 			lst_int/ft_lstlast.c \
 			lst_int/ft_lstnew.c \
 			lst_int/ft_lstprint.c \
-			lst_int/ft_lstsize.c
+			lst_int/ft_lstsize.c \
+			lst_int/ft_lstlargest.c \
+			lst_int/ft_lstsmallest.c
 
 CC := cc
 CFLAGS := -Wall -Wextra -Werror

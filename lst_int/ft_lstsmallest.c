@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 12:48:38 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/05 13:10:57 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/07 07:52:40 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*ft_lstsmallest(t_list *lst)
 	while (curr && curr->next)
 	{
 		if (smallest->content > curr->next->content)
-			smallest = curr->next->content;
+			smallest = curr->next;
 		curr = curr->next;
 	}
 	return (smallest);
