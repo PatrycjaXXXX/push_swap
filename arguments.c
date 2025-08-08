@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 10:34:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/04 15:35:25 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/08 04:51:18 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	check_arg(char **arg, int i)
 		j = 0;
 		while (arg[j])
 		{
-			if (i != j && ft_strcmp(arg[i], arg[j]) == 0)
+			if (i != j && ft_atol(arg[i]) == ft_atol(arg[j]))
 				return (FAIL);
 			j++;
 		}
