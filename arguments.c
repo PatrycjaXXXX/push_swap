@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 10:34:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/08 04:51:18 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/08 06:22:28 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,12 @@ static void	free_arr(int ac, char **arr)
 
 static int	check_format(char *arg)
 {
-	return (!arg
+	if (!arg
 		|| !*arg
 		|| !ft_strcmp(arg, " ")
-		|| ft_strstr(arg, "  "));
+		|| ft_strstr(arg, "  "))
+		return (FAIL);
+	return (SUCCESS);
 }
 
 int	record_arg(int ac, char **av, t_list **stack_a)
@@ -83,7 +85,7 @@ int	record_arg(int ac, char **av, t_list **stack_a)
 
 	if (ac == 2)
 	{
-		if (check_format(av[1]))
+		if (check_format(av[1]) == FAIL)
 			return (FAIL);
 		arg = ft_split(av[1], ' ');
 	}
