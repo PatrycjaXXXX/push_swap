@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   arguments.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 10:34:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/08 06:22:28 by psmolich         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   arguments.c										:+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: psmolich <psmolich@student.42berlin.de>	+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2025/07/29 10:34:40 by psmolich		  #+#	#+#			 */
+/*   Updated: 2025/08/08 12:20:08 by psmolich		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "libft/libft.h"
@@ -16,17 +16,81 @@
 #define FAIL -1
 #define SUCCESS 1
 
-static int	check_value(const char *nptr, int *number)
+static int	check_av(int ac, char **av)
 {
-	long	nb;
+	int	i;
 
-	nb = ft_atol(nptr);
-	if (((long)INT_MIN <= nb) && (nb <= (long)INT_MAX))
-	{
-		*number = (int)nb;
-		return (SUCCESS);
-	}
-	return (FAIL);
+	i = 1;
+	while (i < ac)
+		if (!av[i] || !*av[i] || ft_isallspaces(av[i]))
+			return (FAIL);
+	return (SUCCESS);
+}
+
+// static char	**get_arg(int ac, char **av)
+// {
+// 	char	**arg;
+// 		char	*tmp;
+// 			char	*space;
+// 				int		i;
+
+// 					tmp = ft_strdup(av[1]);
+// 						if (!tmp)
+// 								return (NULL);
+// 									i = 2;
+// 										while (i < ac)
+// 											{
+// 													space = ft_strjoin(tmp, " ");
+// 															free(tmp);
+// 																	if (!space)
+// 																				return (NULL);
+// 																						tmp = ft_strjoin(space, av[i++]);
+// 																								free(space);
+// 																										if (!tmp)
+// 																													return (NULL);
+// 																														}
+// 																															if (!*tmp)
+// 																																	return (free(tmp), NULL);
+// 																																		arg = ft_split(tmp, ' ');
+// 																																			free(tmp);
+// 																																				return (arg);
+// 																																				}
+
+static char **get_arg(int ac, char **av)
+{
+    char    **arg;
+    char    *tmp;
+    char    *new_tmp;
+    int     i;
+
+    if (ac < 2)
+        return (NULL);
+    
+    tmp = ft_strdup(av[1]);
+    if (!tmp)
+        return (NULL);
+    
+    i = 2;
+    while (i < ac)
+    {
+        new_tmp = ft_strjoin(tmp, " ");
+        if (!new_tmp)
+            return (free(tmp), NULL);
+        free(tmp);
+        
+        tmp = ft_strjoin(new_tmp, av[i]);
+        free(new_tmp);
+        if (!tmp)
+            return (NULL);
+        i++;
+    }
+    
+    if (!*tmp)
+        return (free(tmp), NULL);
+    
+    arg = ft_split(tmp, ' ');
+    free(tmp);
+    return (arg);
 }
 
 static int	check_arg(char **arg, int i)
@@ -53,28 +117,17 @@ static int	check_arg(char **arg, int i)
 	return (SUCCESS);
 }
 
-static void	free_arr(int ac, char **arr)
+static int	check_value(const char *nptr, int *number)
 {
-	int	i;
+	long	nb;
 
-	if (ac == 2)
+	nb = ft_atol(nptr);
+	if (((long)INT_MIN <= nb) && (nb <= (long)INT_MAX))
 	{
-		i = 0;
-		while (arr[i])
-			free(arr[i++]);
-		free(arr);
+		*number = (int)nb;
+		return (SUCCESS);
 	}
-	return ;
-}
-
-static int	check_format(char *arg)
-{
-	if (!arg
-		|| !*arg
-		|| !ft_strcmp(arg, " ")
-		|| ft_strstr(arg, "  "))
-		return (FAIL);
-	return (SUCCESS);
+	return (FAIL);
 }
 
 int	record_arg(int ac, char **av, t_list **stack_a)
@@ -83,25 +136,23 @@ int	record_arg(int ac, char **av, t_list **stack_a)
 	int		value;
 	char	**arg;
 
-	if (ac == 2)
-	{
-		if (check_format(av[1]) == FAIL)
-			return (FAIL);
-		arg = ft_split(av[1], ' ');
-	}
-	else
-		arg = av;
-	i = !(ac == 2);
+	if (check_av(ac, av) == FAIL)
+		return (FAIL);
+	arg = get_arg(ac, av);
+	i = 0;
+	while (arg[i])
+		ft_printf(":%s:", arg[i++]);
+	i = 0;
 	if (check_arg(arg, i) == FAIL)
-		return (free_arr(ac, arg), FAIL);
+		return (ft_free_arr(arg), FAIL);
 	while (arg[i])
 	{
 		value = 0;
 		if (check_value(arg[i], &value) == FAIL)
-			return (free_arr(ac, arg), FAIL);
+			return (ft_free_arr(arg), FAIL);
 		ft_lstadd_back(stack_a, ft_lstnew(value));
 		i++;
 	}
-	free_arr(ac, arg);
+	ft_free_arr(arg);
 	return (SUCCESS);
 }
