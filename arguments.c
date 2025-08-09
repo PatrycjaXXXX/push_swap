@@ -22,93 +22,60 @@ static int	check_av(int ac, char **av)
 
 	i = 1;
 	while (i < ac)
+	{
 		if (!av[i] || !*av[i] || ft_isallspaces(av[i]))
 			return (FAIL);
+		i++;
+	}
 	return (SUCCESS);
 }
 
-// static char	**get_arg(int ac, char **av)
-// {
-// 	char	**arg;
-// 		char	*tmp;
-// 			char	*space;
-// 				int		i;
-
-// 					tmp = ft_strdup(av[1]);
-// 						if (!tmp)
-// 								return (NULL);
-// 									i = 2;
-// 										while (i < ac)
-// 											{
-// 													space = ft_strjoin(tmp, " ");
-// 															free(tmp);
-// 																	if (!space)
-// 																				return (NULL);
-// 																						tmp = ft_strjoin(space, av[i++]);
-// 																								free(space);
-// 																										if (!tmp)
-// 																													return (NULL);
-// 																														}
-// 																															if (!*tmp)
-// 																																	return (free(tmp), NULL);
-// 																																		arg = ft_split(tmp, ' ');
-// 																																			free(tmp);
-// 																																				return (arg);
-// 																																				}
-
-static char **get_arg(int ac, char **av)
+static char	**get_arg(int ac, char **av)
 {
-    char    **arg;
-    char    *tmp;
-    char    *new_tmp;
-    int     i;
+	char	**arg;
+	char	*tmp;
+	char	*space;
+	int		i;
 
-    if (ac < 2)
-        return (NULL);
-    
-    tmp = ft_strdup(av[1]);
-    if (!tmp)
-        return (NULL);
-    
-    i = 2;
-    while (i < ac)
-    {
-        new_tmp = ft_strjoin(tmp, " ");
-        if (!new_tmp)
-            return (free(tmp), NULL);
-        free(tmp);
-        
-        tmp = ft_strjoin(new_tmp, av[i]);
-        free(new_tmp);
-        if (!tmp)
-            return (NULL);
-        i++;
-    }
-    
-    if (!*tmp)
-        return (free(tmp), NULL);
-    
-    arg = ft_split(tmp, ' ');
-    free(tmp);
-    return (arg);
+	tmp = ft_strdup(av[1]);
+	if (!tmp)
+		return (NULL);
+	i = 2;
+	while (i < ac)
+	{
+		space = ft_strjoin(tmp, " ");
+		free(tmp);
+		if (!space)
+			return (NULL);
+		tmp = ft_strjoin(space, av[i++]);
+		free(space);
+		if (!tmp)
+			return (NULL);
+	}
+	if (!*tmp)
+		return (free(tmp), NULL);
+	arg = ft_split(tmp, ' ');
+	return (free(tmp), arg);
 }
 
 static int	check_arg(char **arg, int i)
 {
 	int	j;
 
+	if (!arg || !*arg)
+		return (FAIL);
 	while (arg[i])
 	{
-		if (!(ft_strlen(arg[i]) <= 11 && ft_strchr("0123456789-+", arg[i][0])))
+		j = (arg[i][0] == '-' || arg[i][0] == '+');
+		if (ft_strlen(arg[i]) > 11 || (j && !arg[i][1]))
 			return (FAIL);
-		j = 0;
-		while (arg[i][++j])
-			if (!ft_isdigit(arg[i][j]))
+		while (arg[i][j])
+			if (!ft_isdigit(arg[i][j++]))
 				return (FAIL);
 		j = 0;
 		while (arg[j])
 		{
-			if (i != j && ft_atol(arg[i]) == ft_atol(arg[j]))
+			if (i != j && ft_atol(arg[i]) == ft_atol(arg[j++]))
 				return (FAIL);
 			j++;
 		}
@@ -139,9 +106,8 @@ int	record_arg(int ac, char **av, t_list **stack_a)
 	if (check_av(ac, av) == FAIL)
 		return (FAIL);
 	arg = get_arg(ac, av);
-	i = 0;
-	while (arg[i])
-		ft_printf(":%s:", arg[i++]);
+	if (!arg || !*arg)
+		return (FAIL);
 	i = 0;
 	if (check_arg(arg, i) == FAIL)
 		return (ft_free_arr(arg), FAIL);
