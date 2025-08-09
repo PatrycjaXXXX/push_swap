@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 13:23:58 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/06 09:18:13 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/09 15:55:29 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # include "libft/libft.h"
 # include "lst_int/lst_int.h"
+
+typedef struct s_radix
+{
+	int				norm;
+	int				index;
+	struct s_list	*next;
+}	t_radix;
 
 int	record_arg(int ac, char **av, t_list **stack_a);
 int	apply_instr(char *instr, t_list **stack_a, t_list **stack_b);
