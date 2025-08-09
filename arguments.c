@@ -106,8 +106,6 @@ int	record_arg(int ac, char **av, t_list **stack_a)
 	if (check_av(ac, av) == FAIL)
 		return (FAIL);
 	arg = get_arg(ac, av);
-	if (!arg || !*arg)
-		return (FAIL);
 	i = 0;
 	if (check_arg(arg, i) == FAIL)
 		return (ft_free_arr(arg), FAIL);
