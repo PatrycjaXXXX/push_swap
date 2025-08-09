@@ -75,7 +75,7 @@ static int	check_arg(char **arg, int i)
 		j = 0;
 		while (arg[j])
 		{
-			if (i != j && ft_atol(arg[i]) == ft_atol(arg[j++]))
+			if (i != j && ft_atol(arg[i]) == ft_atol(arg[j]))
 				return (FAIL);
 			j++;
 		}
