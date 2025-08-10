@@ -114,7 +114,7 @@ int	record_arg(int ac, char **av, t_list **stack_a)
 		value = 0;
 		if (check_value(arg[i], &value) == FAIL)
 			return (ft_free_arr(arg), FAIL);
-		ft_lstadd_back(stack_a, ft_lstnew(value));
+		ft_lstadd_back(stack_a, ft_lstnew(value, i));
 		i++;
 	}
 	ft_free_arr(arg);

@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfree.c                                       :+:      :+:    :+:   */
+/*   ft_lstcopy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 12:57:01 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/10 04:59:55 by psmolich         ###   ########.fr       */
+/*   Created: 2025/08/10 06:26:04 by psmolich          #+#    #+#             */
+/*   Updated: 2025/08/10 06:36:12 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lst_int.h"
 #include <stdlib.h>
 
-void	ft_lstfree(t_list **lst)
+t_list  *ft_lstcopy(t_list *src)
 {
-	t_list	*temp;
+	t_list	*new_list;
+	t_list	*new_node;
 
-	if (!lst)
-		return ;
-	while (*lst)
+	if (!src)
+		return (NULL);
+	new_list = NULL;
+	while (src)
 	{
-		temp = (*lst)->next;
-		free(*lst);
-		*lst = temp;
+		new_node = ft_lstnew(src->content, src->index);
+		if (!new_node)
+			return (ft_lstfree(&new_list), NULL);
+		ft_lstadd_back(&new_list, new_node);
+		src = src->next;
 	}
-	*lst = NULL;
+	return (new_list);
 }
