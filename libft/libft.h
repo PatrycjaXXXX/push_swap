@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 16:46:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/10 08:42:17 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/10 17:47:22 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,5 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strstr(const char *haystack, const char *needle);
 void	ft_free_arr(char **arr);
+void	ft_delpattern(char **str, const char *pattern);
 #endif

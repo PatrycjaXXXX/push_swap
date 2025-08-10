@@ -12,8 +12,24 @@
 
 #include "push_swap.h"
 #include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 #define FAIL -1
 #define SUCCESS 1
+
+static int	save_move(char *move, t_list **stack_a, t_list **stack_b, char **instr)
+{
+	char	*tmp;
+
+	if (!move || !instr)
+		return (FAIL);
+	tmp = ft_strjoin(*instr, move);
+	if (!tmp)
+		return (FAIL);
+	free(*instr);
+	*instr = tmp;
+	return (apply_instr(move, stack_a, stack_b));
+}
 
 static void	normalize_data(t_list **stack_a, t_list **stack_b, int size_a)
 {
@@ -38,87 +54,24 @@ static void	normalize_data(t_list **stack_a, t_list **stack_b, int size_a)
 	}
 }
 
-// int	ft_radixsort(t_list **stack_a, t_list **stack_b, int size_a)
-// {
-// 	int		max_bits;
-// 	int		i;
-// 	int		j;
-
-// 	normalize_data(stack_a, stack_b, size_a);
-// 	max_bits = ft_bitcount(size_a - 1);
-// 	i = 0;
-// 	while (i < max_bits)
-// 	{
-// 		j = 0;
-// 		while (j < size_a)
-// 		{
-// 			if (((stack_r->content >> i) & 1) == 0)
-// 				apply_instr("pb\n", &stack_r, stack_b);
-// 			else
-// 				apply_instr("ra\n", &stack_r, stack_b);
-// 			j++;
-// 		}
-// 		ft_lstprint(stack_r);
-// 		ft_lstprint(*stack_b);
-// 		ft_printf("\n");
-// 		i++;
-// 	}
-// 	while (*stack_b)
-// 		apply_instr("pa\n", &stack_r, stack_b);
-// 	ft_lstprint(stack_r);
-// 	ft_lstprint(*stack_b);
-// 	ft_printf("\n");
-// 	ft_lstfree(&stack_r);
-// 	return (SUCCESS);
-// }
-
-// int	ft_radixsort(t_list **stack_a, t_list **stack_b, int size_a)
-// {
-// 	int		max_bits;
-// 	int		i;
-// 	int		j;
-
-// 	// Normalizuj bezpośrednio na stack_a (zamień wartości na indeksy)
-// 	normalize_data(stack_a, stack_b, size_a);
-
-// 	max_bits = ft_bitcount(size_a - 1);
-// 	i = 0;
-// 	while (i < max_bits)
-// 	{
-// 		j = 0;
-// 		while (j < size_a)
-// 		{
-// 			if ((((*stack_a)->content >> i) & 1) == 0)
-// 				apply_instr("pb\n", stack_a, stack_b);
-// 			else
-// 				apply_instr("ra\n", stack_a, stack_b);
-// 			j++;
-// 		}
-// 		// Opcjonalnie: debug print
-// 		ft_lstprint(*stack_a);
-// 		ft_lstprint(*stack_b);
-// 		ft_printf("\n");
-// 		i++;
-// 	}
-
-// 	// Po przejściu przez wszystkie bity, wracamy elementy ze stack_b do stack_a
-// 	while (*stack_b)
-// 		apply_instr("pa\n", stack_a, stack_b);
-
-// 	ft_lstprint(*stack_a);
-// 	ft_lstprint(*stack_b);
-// 	ft_printf("\n");
-// 	return (SUCCESS);
-// }
-
-int ft_radixsort(t_list **stack_a, t_list **stack_b, int size_a)
+static void	optimize_instr(char **instr)
 {
-	int max_bits;
-	int i;
-	int j;
+	while (ft_strstr(*instr, "pb\npa\n"))
+		ft_delpattern(instr, "pb\npa\n");
+}
+
+int	ft_radixsort(t_list **stack_a, t_list **stack_b, int size_a)
+{
+	int		max_bits;
+	int		i;
+	int		j;
+	char	*instr;
 
 	max_bits = ft_bitcount(size_a - 1);
 	normalize_data(stack_a, stack_b, size_a);
+	instr = ft_strdup("");
+	if (!instr)
+		return (FAIL);
 	i = 0;
 	while (i < max_bits)
 	{
@@ -126,15 +79,20 @@ int ft_radixsort(t_list **stack_a, t_list **stack_b, int size_a)
 		while (j < size_a)
 		{
 			if ((((*stack_a)->content >> i) & 1) == 0)
-				apply_instr("pb\n", stack_a, stack_b);
+				save_move("pb\n", stack_a, stack_b, &instr);
 			else
-				apply_instr("ra\n", stack_a, stack_b);
+				save_move("ra\n", stack_a, stack_b, &instr);
 			j++;
 		}
 		while (*stack_b)
-			apply_instr("pa\n", stack_a, stack_b);
+			save_move("pa\n", stack_a, stack_b, &instr);
 		i++;
 	}
+	// if (ft_lst_issorted_as(*stack_a) == SUCCESS)
+	// 	ft_printf("\nposortowana\n");
+	optimize_instr(&instr);
+	ft_printf("%s", instr);
+	free(instr);
 	return (SUCCESS);
 }
 
