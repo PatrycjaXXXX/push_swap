@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 16:46:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/08 12:46:47 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/10 08:42:17 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define DEC "0123456789"
 # define FLAGS_CHECK "-+ 0#"
 # define PRECISION_CHECK "."
-# define TYPE_CHECK "cspdiuxX%%"
+# define TYPE_CHECK "cspdiuxXb%%"
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
@@ -77,6 +77,7 @@ int		ft_isspace(int c);
 int		ft_isallspaces(const char *str);
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *s, int c, size_t n);
+int		ft_bitcount(int nbr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);

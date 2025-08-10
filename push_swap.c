@@ -6,15 +6,13 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 13:23:56 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/10 06:47:23 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/10 07:45:50 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #define FAIL -1
 #define SUCCESS 1
-
-int	ft_radixsort(t_list **stack_a, t_list **stack_b, int size_a);
 
 static void	cleanup(t_list **stack_a, t_list **stack_b)
 {

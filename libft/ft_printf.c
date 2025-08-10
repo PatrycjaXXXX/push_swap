@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 14:20:51 by psmolich          #+#    #+#             */
-/*   Updated: 2025/06/18 15:04:57 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/10 08:42:27 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void	ft_printformat(t_spec *conv, va_list arg, int *p_count)
 		ft_putuint_base_rvf(va_arg(arg, unsigned int), HEX, conv, p_count);
 	else if (conv->type == 'X')
 		ft_putuint_base_rvf(va_arg(arg, unsigned int), HEX_B, conv, p_count);
+	else if (conv->type == 'b')
+		ft_putuint_base_rvf(va_arg(arg, unsigned int), "01", conv, p_count);
 	else if (conv->type == '%')
 		*p_count += ft_putchar_rv('%');
 }
