@@ -56,8 +56,8 @@ static void	normalize_data(t_list **stack_a, t_list **stack_b, int size_a)
 
 static void	optimize_instr(char **instr)
 {
-	while (ft_strstr(*instr, "pb\npa\n"))
-		ft_delpattern(instr, "pb\npa\n");
+	ft_strdel(instr, "pb\npa\n");
+	ft_strdel(instr, "pa\npb\n");
 }
 
 int	ft_radixsort(t_list **stack_a, t_list **stack_b, int size_a)

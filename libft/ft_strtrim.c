@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 14:48:01 by psmolich          #+#    #+#             */
-/*   Updated: 2025/06/08 17:37:14 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/11 05:00:15 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ft_strlcpy(str, start, size + 1);
 	return (str);
 }
-
-// #include <stdio.h>
-
-// int main(void)
-// {
-// 	char *str;
-
-// 	str = ft_strtrim("Klawiatura", "Klawiatura");
-// 	printf(";%s;", str);
-
-// 	free(str);
-// }

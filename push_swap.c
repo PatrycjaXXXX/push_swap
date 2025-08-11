@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 13:23:56 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/10 07:45:50 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/11 04:42:02 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ static int	ft_sort_lstint(t_list **stack_a, t_list **stack_b)
 	size_a = ft_lstsize(*stack_a);
 	if (ft_lst_issorted_des(*stack_a) == SUCCESS)
 		return (des_to_as(stack_a, stack_b, size_a));
-	// ft_selectionsort(stack_a, stack_b, size_a);
+	else if (size_a <= 10)
+		ft_selectionsort(stack_a, stack_b, size_a);
 	// ft_bubblesort(stack_a, stack_b);
-	ft_radixsort(stack_a, stack_b, size_a);
+	else
+		ft_radixsort(stack_a, stack_b, size_a);
 	return (SUCCESS);
 }
 

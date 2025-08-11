@@ -6,7 +6,7 @@
 #    By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 10:11:16 by psmolich          #+#    #+#              #
-#    Updated: 2025/08/10 17:47:46 by psmolich         ###   ########.fr        #
+#    Updated: 2025/08/11 05:11:54 by psmolich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@ EXTRA := ft_atol.c \
 		ft_isallspaces.c \
 		ft_free_arr.c \
 		ft_bitcount.c \
-		ft_delpattern.c
+		ft_strstr_count.c
+# 		ft_delpattern.c
 		
 PRINTF := ft_check.c \
 		ft_printf.c \

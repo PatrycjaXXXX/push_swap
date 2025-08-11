@@ -5,7 +5,7 @@ int main()
 {
 	char *text;
 
-	text = ft_strdup("abba hello ab i ty ba abb");
-	ft_delpattern(&text, "ab");
-	ft_printf("%s", text);
+	text = "abba hello ab i ty ba abb";
+	int i = ft_strstr_count(text, "ab");
+	ft_printf("%s | %i\n", text, i);
 }
