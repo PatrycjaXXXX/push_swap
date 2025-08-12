@@ -17,6 +17,21 @@
 #define FAIL -1
 #define SUCCESS 1
 
+static void	optimize_instr(char **instr)
+{
+	ft_strdel(instr, "pb\npa\n");
+	ft_strdel(instr, "pa\npb\n");
+
+	ft_strrep(instr, "sa\nsb\n", "ss\n");
+	ft_strrep(instr, "sb\nsa\n", "ss\n");
+
+	ft_strrep(instr, "ra\nrb\n", "rr\n");
+	ft_strrep(instr, "rb\nra\n", "rr\n");
+	
+	ft_strrep(instr, "rra\nrrb\n", "rrr\n");
+	ft_strrep(instr, "rrb\nrra\n", "rrr\n");
+}
+
 static int	save_move(char *move, t_list **stack_a, t_list **stack_b, char **instr)
 {
 	char	*tmp;
@@ -28,6 +43,7 @@ static int	save_move(char *move, t_list **stack_a, t_list **stack_b, char **inst
 		return (FAIL);
 	free(*instr);
 	*instr = tmp;
+	optimize_instr(instr);
 	return (apply_instr(move, stack_a, stack_b));
 }
 
@@ -52,12 +68,6 @@ static void	normalize_data(t_list **stack_a, t_list **stack_b, int size_a)
 			apply_instr("rb\n", stack_a, stack_b);
 		apply_instr("pa\n", stack_a, stack_b);
 	}
-}
-
-static void	optimize_instr(char **instr)
-{
-	ft_strdel(instr, "pb\npa\n");
-	ft_strdel(instr, "pa\npb\n");
 }
 
 int	ft_radixsort(t_list **stack_a, t_list **stack_b, int size_a)
@@ -90,7 +100,7 @@ int	ft_radixsort(t_list **stack_a, t_list **stack_b, int size_a)
 	}
 	// if (ft_lst_issorted_as(*stack_a) == SUCCESS)
 	// 	ft_printf("\nposortowana\n");
-	optimize_instr(&instr);
+	
 	ft_printf("%s", instr);
 	free(instr);
 	return (SUCCESS);

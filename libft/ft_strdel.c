@@ -5,40 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 04:47:08 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/11 05:23:27 by psmolich         ###   ########.fr       */
+/*   Created: 2025/08/12 03:56:40 by psmolich          #+#    #+#             */
+/*   Updated: 2025/08/12 06:23:19 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-// sorce string needs to be created by allocating memory and provided as an adress
-int	ft_strdel(char **str, const char *pattern)
+// str needs to be provided as an address of a previously allocated string
+int	ft_strdel(char **str, char *pattern)
 {
-	char	*src;
-	char	*dst;
 	char	*new_str;
-	size_t	pat_len;
+	char	*src;
+	int		pat_len;
+	int		i;
 
-	if (!str || !*str || !pattern)
-		return (-1);
-	pat_len = ft_strlen(pattern);
-	if (pat_len == 0)
-		return (0);
-	new_str = malloc(ft_strlen(*str) + 1);
-	if (!new_str)
+	if (!str || !*str || !pattern || !*pattern)
 		return (-1);
 	src = *str;
-	dst = new_str;
+	pat_len = ft_strlen(pattern);
+	new_str = malloc(sizeof(char) * (ft_strlen(src)
+				- ft_strstr_count(src, pattern) * pat_len + 1));
+	if (!new_str)
+		return (-1);
+	i = 0;
 	while (*src)
 	{
 		if (ft_strncmp(src, pattern, pat_len) == 0)
 			src += pat_len;
-		else
-			*dst++ = *src++;
+		new_str[i++] = *src++;
 	}
-	*dst = '\0';
+	new_str[i] = '\0';
 	free(*str);
 	*str = new_str;
 	return (0);

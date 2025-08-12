@@ -6,19 +6,13 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 13:23:56 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/11 04:42:02 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/12 09:07:50 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #define FAIL -1
 #define SUCCESS 1
-
-static void	cleanup(t_list **stack_a, t_list **stack_b)
-{
-	ft_lstfree(stack_a);
-	ft_lstfree(stack_b);
-}
 
 static int	ft_sort_lstint(t_list **stack_a, t_list **stack_b)
 {
@@ -49,7 +43,9 @@ int	main(int ac, char **av)
 		return (ft_lstfree(&stack_a), 0);
 	stack_b = NULL;
 	if (ft_sort_lstint(&stack_a, &stack_b) == FAIL)
-		return (cleanup(&stack_a, &stack_b), write(2, "Error\n", 6), FAIL);
-	cleanup(&stack_a, &stack_b);
+		return (ft_lstfree(stack_a), ft_lstfree(stack_b),
+			write(2, "Error\n", 6), FAIL);
+	ft_lstfree(stack_a);
+	ft_lstfree(stack_b);
 	return (0);
 }
