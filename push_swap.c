@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 13:23:56 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/12 09:07:50 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/08/21 15:01:16 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	main(int ac, char **av)
 		return (ft_lstfree(&stack_a), 0);
 	stack_b = NULL;
 	if (ft_sort_lstint(&stack_a, &stack_b) == FAIL)
-		return (ft_lstfree(stack_a), ft_lstfree(stack_b),
+		return (ft_lstfree(&stack_a), ft_lstfree(&stack_b),
 			write(2, "Error\n", 6), FAIL);
-	ft_lstfree(stack_a);
-	ft_lstfree(stack_b);
+	ft_lstfree(&stack_a);
+	ft_lstfree(&stack_b);
 	return (0);
 }
