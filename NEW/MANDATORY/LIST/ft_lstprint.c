@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 16:30:52 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/31 11:34:06 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/06 20:44:30 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_lstprint(t_list *lst)
 	while (lst)
 	{
 		ft_printf(" -> ");
-		ft_printf("[%b]", lst->content);
+		ft_printf("[%i keep %i]", lst->content, lst->lis_keep);
 		lst = lst->next;
 	}
 	ft_printf("\n");

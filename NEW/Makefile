@@ -6,7 +6,7 @@
 #    By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/30 14:44:28 by psmolich          #+#    #+#              #
-#    Updated: 2025/09/06 11:20:21 by psmolich         ###   ########.fr        #
+#    Updated: 2025/09/06 19:57:50 by psmolich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SRCS_PUSHSWAP := MANDATORY/push_swap.c \
 					MANDATORY/arguments.c \
 					MANDATORY/instructions.c \
 					MANDATORY/sorting.c \
-					MANDATORY/radix.c \
 					MANDATORY/movetop.c \
 					MANDATORY/lis.c \
 					MANDATORY/LIST/ft_lstaddback.c \
