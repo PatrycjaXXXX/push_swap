@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:44:43 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/06 22:01:10 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/07 18:22:48 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int		ft_steps(int index, int size);
 void	ft_adjuststeps(int *a_steps, int *b_steps, int size_a, int size_b);
 
 void	ft_selectionsort(t_list **a, t_list **b, int size_a);
-void	ft_lis(t_list **a, t_list **b);
+void	ft_longest_increasing_subsequence(t_list **a, t_list **b);
+
+t_list	*where_to_in_a(t_list *a, t_list *node_b);
+void	push_non_keep_to_b(t_list **a, t_list **b);
 
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);

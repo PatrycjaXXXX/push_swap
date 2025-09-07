@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 19:54:24 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/06 21:54:54 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:18:32 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	ft_steps(int index, int size)
 {
 	if (index <= 0 || size == 0)
 		return (0);
-	if (index < size / 2)
-		return (index);
-	return (index - size);
+	if (index > size / 2)
+		return (index - size);
+	return (index);
 }
 
 void	ft_adjuststeps(int *a_steps, int *b_steps, int size_a, int size_b)
