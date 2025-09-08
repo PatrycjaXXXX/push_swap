@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:44:43 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/07 18:22:48 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/08 05:04:49 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ int		apply_instr(char *instr, t_list **stack_a, t_list **stack_b);
 int		record_arg(int ac, char **av, t_list **stack_a);
 int		ft_move(char *move, t_list **a, t_list **b);
 void	ft_movetop(t_list **a, t_list **b, t_list *node_a, t_list *node_b);
-int		ft_steps(int index, int size);
-void	ft_adjuststeps(int *a_steps, int *b_steps, int size_a, int size_b);
+int		steps_to_top(int index, int size);
+void	adjuststeps(int *a_steps, int *b_steps, int size_a, int size_b);
 
 void	ft_selectionsort(t_list **a, t_list **b, int size_a);
-void	ft_longest_increasing_subsequence(t_list **a, t_list **b);
+void	ft_longest_increasing_subsequence_sort(t_list **a, t_list **b);
 
-t_list	*where_to_in_a(t_list *a, t_list *node_b);
 void	push_non_keep_to_b(t_list **a, t_list **b);
 
 void	ft_lstadd_back(t_list **lst, t_list *new);

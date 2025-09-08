@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lis.c                                              :+:      :+:    :+:   */
+/*   lis_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 20:06:50 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/07 18:27:15 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/08 04:54:18 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,26 +85,4 @@ void	push_non_keep_to_b(t_list **a, t_list **b)
 		else
 			ft_move("ra\n", a, b);
 	}
-}
-
-t_list	*where_to_in_a(t_list *a, t_list *node_b)
-{
-	t_list	*min;
-	t_list	*max;
-	t_list	*head;
-
-	min = ft_lstsmallest(a);
-	max = ft_lstlargest(a);
-	if (node_b->content < min->content)
-		return (min);
-	if (node_b->content > max->content)
-		return (max->next);
-	head = a;
-	while (a && a->next)
-	{
-		if (a->content < node_b->content && node_b->content < a->next->content)
-			return (a->next);
-		a = a->next;
-	}
-	return (head);
 }

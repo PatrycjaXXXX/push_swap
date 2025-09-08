@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:44:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/07 18:23:13 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/08 05:24:15 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	ft_sort(t_list **a, t_list **b)
 	else if (size_a <= 10)
 		ft_selectionsort(a, b, size_a);
 	else
-		ft_longest_increasing_subsequence(a, b);
+		ft_longest_increasing_subsequence_sort(a, b);
 	return (ft_lstissorted_as(*a));
 }
 

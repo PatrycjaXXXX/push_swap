@@ -6,14 +6,14 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 19:54:24 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/07 15:18:32 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/08 05:00:43 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "../libft/libft.h"
 
-int	ft_steps(int index, int size)
+int	steps_to_top(int index, int size)
 {
 	if (index <= 0 || size == 0)
 		return (0);
@@ -22,7 +22,7 @@ int	ft_steps(int index, int size)
 	return (index);
 }
 
-void	ft_adjuststeps(int *a_steps, int *b_steps, int size_a, int size_b)
+void	adjuststeps(int *a_steps, int *b_steps, int size_a, int size_b)
 {
 	unsigned int	best;
 
@@ -92,10 +92,10 @@ void	ft_movetop(t_list **a, t_list **b, t_list *node_a, t_list *node_b)
 
 	size_a = ft_lstsize(*a);
 	size_b = ft_lstsize(*b);
-	a_steps = ft_steps(ft_lstindex(*a, node_a), size_a);
-	b_steps = ft_steps(ft_lstindex(*b, node_b), size_b);
+	a_steps = steps_to_top(ft_lstindex(*a, node_a), size_a);
+	b_steps = steps_to_top(ft_lstindex(*b, node_b), size_b);
 	if (a_steps * b_steps < 0)
-		ft_adjuststeps(&a_steps, &b_steps, size_a, size_b);
+		adjuststeps(&a_steps, &b_steps, size_a, size_b);
 	ft_dodoublerot(a, b, &a_steps, &b_steps);
 	ft_dosinglerot(a, b, &a_steps, &b_steps);
 }

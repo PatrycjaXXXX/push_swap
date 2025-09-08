@@ -6,15 +6,14 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:44:33 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/30 15:12:10 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/08 05:31:31 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "../libft/libft.h"
+#include "../MANDATORY/push_wap.h"
 #include <unistd.h>
-#define FAIL -1
-#define SUCCESS 1
 
 void	ft_lstfree(t_list **lst)
 {
